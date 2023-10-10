@@ -31,15 +31,16 @@ const Home = () => {
     };
 
     return (
-        <div>
+        <div className={'flex flex-col justify-center w-full'}>
             <h1 className=" flex font-bold text-2xl justify-center ">Login</h1>
-            <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+            <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '20vh', width: '100vw', alignItems: 'center'}}>
                 <TextField
                     id="outlined-basic-username"
                     label="Username"
                     variant="outlined"
                     value={username}
                     onChange={handleUsernameChange}
+                    sx={{width: '20em', m: '0.5em'}}
                 />
                 <TextField
                     id="outlined-basic-password"
@@ -48,11 +49,15 @@ const Home = () => {
                     value={password}
                     type={"password"}
                     onChange={handlePasswordChange}
+                    sx={{width: '20em', justifyContent:'center'}}
                 />
-                <Button variant="contained" color="primary" onClick={handleLogin}>
+                <Button variant="contained" color="primary" sx={{height: '3em', width: '7em', m: '0.5em'}}  onClick={handleLogin}>
                     Login
                 </Button>
             </Box>
+            {/*<Button variant="contained" color="primary" sx={{height: '3em', width: '7em'}}  onClick={handleLogin}>*/}
+            {/*    Login*/}
+            {/*</Button>*/}
         </div>
     );
 };
