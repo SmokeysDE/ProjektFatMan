@@ -8,7 +8,7 @@ import FavouritesPage from "../pages/FavouritesPage";
 export default function MainPane({ activeSection }) {
 
     return(
-        <Box className={'flex wrap ml-7 bg-white h-[calc(100vh-10rem)] w-full'}>
+        <Box className={'flex wrap bg-white h-[calc(100vh-10rem)] w-full ml-7'}>
             <Box className={'flex flex-row gap-4'}>
                 {activeSection === 'library' && <Library/>}
                 {activeSection === 'settings' && <SettingsPage/>}
