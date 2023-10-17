@@ -14,10 +14,11 @@ import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Box from "@mui/material/Box";
-
+import {useNavigate} from "react-router-dom";
 
 export default function SidebarVisible( {setSection} ) {
     const {resetInbox, inboxNumber} = useContext(NumberContext);
+    const navigate = useNavigate();
 
     const handleLoadLibrary = () =>{
         setSection('library');
@@ -38,6 +39,13 @@ export default function SidebarVisible( {setSection} ) {
     const Theme = styled('div')(({ theme }) => ({
         backgroundColor: theme.palette.background.paper,
     }));
+    const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+    const handleLogout = () => {
+        // Hier wird der JWT-Token aus dem Local Storage entfernt
+        localStorage.removeItem('jwtToken');
+        // Redirect zur Startseite
+        navigate('/');
+    }
     return (
         <Theme>
             <Box sx={{display: {xs: 'none', md: 'flex'}, width: '15em'}}>
@@ -84,7 +92,7 @@ export default function SidebarVisible( {setSection} ) {
                             <ListItemText primary="Settings" />
                         </ListItem>
                     </ListItemButton>
-                    <ListItemButton>
+                    <ListItemButton onClick={handleLogout}>
                         <ListItem>
                             <ListItemIcon>
                                 <LogoutIcon />

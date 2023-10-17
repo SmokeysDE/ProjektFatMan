@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { TextField, Button } from "@mui/material";
 import Box from "@mui/material/Box";
+import { Navigate } from 'react-router-dom';
+
 
 const Home = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
     };
@@ -17,18 +19,21 @@ const Home = () => {
 
     const handleLogin = async () => {
         try {
-            const res = await axios.get("http://18.185.110.14:5000/api/user");
-            const userData = res.data[0];
+            const res = await axios.post("http://18.185.110.14:5000/api/login", { uname: username, pass: password });
+            const { token } = res.data;
 
-            if (userData.uname === username && userData.pass === password) {
-                window.location.href = "/dashboard";
-            } else {
-                console.log("Invalid credentials");
-            }
+            // Hier wird der JWT-Token im Local Storage gespeichert
+            localStorage.setItem('jwtToken', token);
+            window.location.href =`/dashboard/${username}`
         } catch (error) {
             console.error("Login failed", error);
         }
     };
+    useEffect(() => {
+        const jwtToken = localStorage.getItem('jwtToken');
+        setIsLoggedIn(!!jwtToken);
+    }, []);
+
 
     return (
         <div className={'flex flex-col justify-center w-full'}>
