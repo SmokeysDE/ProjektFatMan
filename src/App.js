@@ -5,6 +5,7 @@ import {
   Route,
   BrowserRouter} from "react-router-dom";
 import Home from "./pages/Home";
+import Register from "./pages/Register";
 import {useState, useEffect} from "react";
 
 
@@ -22,7 +23,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path={'/dashboard/:username'} element={<Main />}/>
-            {/*<Route path="/about" element={<About />} />*/}
+            <Route path="/register" element={<Register />} />
           </Routes>
         </BrowserRouter>
       </div>

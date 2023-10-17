@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { TextField, Button } from "@mui/material";
 import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
 import { Navigate } from 'react-router-dom';
 
 
@@ -59,10 +60,10 @@ const Home = () => {
                 <Button variant="contained" color="primary" sx={{height: '3em', width: '7em', m: '0.5em'}}  onClick={handleLogin}>
                     Login
                 </Button>
+                <Link href="/register" underline="hover">
+                    {'Register here!'}
+                </Link>
             </Box>
-            {/*<Button variant="contained" color="primary" sx={{height: '3em', width: '7em'}}  onClick={handleLogin}>*/}
-            {/*    Login*/}
-            {/*</Button>*/}
         </div>
     );
 };
