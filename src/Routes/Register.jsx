@@ -53,9 +53,11 @@ const Register = () => {
         }
     };
     return (
-        <div className={'flex flex-col justify-center w-full mt-7'}>
-            <h1 className=" flex font-bold text-2xl justify-center ">Register</h1>
-            <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '40vh', width: '100vw', alignItems: 'center'}}>
+        <div className="grid grid-cols-2 grid-rows-1 w-full h-screen">
+            {/* Left Column */}
+            <div className="col-start-1 flex flex-col justify-center bg-white p-8">
+                <h1 className="font-bold text-2xl text-center">Register</h1>
+                <Box sx={{ display: 'flex', flexDirection: 'column', m: '0.5em', justifyContent:'center', alignItems: 'center' }}>
                 <TextField
                     id="outlined-basic-firstname"
                     label="Fistname"
@@ -109,6 +111,27 @@ const Register = () => {
                     Send
                 </Button>
             </Box>
+        </div>
+            <div
+                className="col-start-2 p-8 text-white items-center justify-center flex flex-col"
+                style={{
+                    backgroundColor: '#035397',
+                    padding: '1em',
+                }}
+            >
+                <Button
+                    variant="outlined"
+                    sx={{ position: 'absolute', top: '1em', right: '1em', color: 'white', borderColor: 'white' }}
+                    onClick={() => {window.location.href =`/login`}}
+                >
+                    Login
+                </Button>
+                <p className="font-bold text-center">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin bibendum ut lacus nec
+                    bibendum. Aliquam erat volutpat. Nulla facilisi. Donec in semper massa, nec commodo
+                    augue.
+                </p>
+            </div>
         </div>
     );
 }

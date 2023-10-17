@@ -6,7 +6,7 @@ import Link from "@mui/material/Link";
 import { Navigate } from 'react-router-dom';
 
 
-const Home = () => {
+const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -37,9 +37,11 @@ const Home = () => {
 
 
     return (
-        <div className={'flex flex-col justify-center w-full'}>
-            <h1 className=" flex font-bold text-2xl justify-center ">Login</h1>
-            <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '20vh', width: '100vw', alignItems: 'center'}}>
+        <div className="grid grid-cols-2 grid-rows-1 w-full h-screen">
+            {/* Left Column */}
+            <div className="col-start-1 flex flex-col justify-center bg-white p-8">
+                <h1 className="font-bold text-2xl text-center">Login</h1>
+                <Box sx={{ display: 'flex', flexDirection: 'column', m: '0.5em', justifyContent:'center', alignItems: 'center' }}>
                 <TextField
                     id="outlined-basic-username"
                     label="Username"
@@ -55,17 +57,38 @@ const Home = () => {
                     value={password}
                     type={"password"}
                     onChange={handlePasswordChange}
-                    sx={{width: '20em', justifyContent:'center'}}
+                    sx={{width: '20em', m: '0.5em'}}
                 />
                 <Button variant="contained" color="primary" sx={{height: '3em', width: '7em', m: '0.5em'}}  onClick={handleLogin}>
                     Login
                 </Button>
-                <Link href="/register" underline="hover">
+                <Link href="/frontend/projectfatman/src/Routes/Register" underline="hover">
                     {'Register here!'}
                 </Link>
             </Box>
+            </div>
+            <div
+                className="col-start-2 p-8 text-white items-center justify-center flex flex-col"
+                style={{
+                    backgroundColor: '#035397',
+                    padding: '1em',
+                }}
+            >
+                <Button
+                    variant="outlined"
+                    sx={{ position: 'absolute', top: '1em', right: '1em', color: 'white', borderColor: 'white' }}
+                    onClick={() => {window.location.href =`/register`}}
+                >
+                    Register
+                </Button>
+                <p className="font-bold text-center">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin bibendum ut lacus nec
+                    bibendum. Aliquam erat volutpat. Nulla facilisi. Donec in semper massa, nec commodo
+                    augue.
+                </p>
+            </div>
         </div>
     );
 };
 
-export default Home;
+export default Login;

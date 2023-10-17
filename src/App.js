@@ -4,9 +4,10 @@ import {
   Routes,
   Route,
   BrowserRouter} from "react-router-dom";
-import Home from "./pages/Home";
-import Register from "./pages/Register";
+import Login from "./Routes/Login";
+import Register from "./Routes/Register";
 import {useState, useEffect} from "react";
+import Home from "./Routes/Home";
 
 
 function App() {
@@ -21,7 +22,8 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Register />} />
+            <Route path="/login" element={<Login />} />
             <Route path={'/dashboard/:username'} element={<Main />}/>
             <Route path="/register" element={<Register />} />
           </Routes>
