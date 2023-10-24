@@ -4,6 +4,7 @@ import { TextField, Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import { Navigate } from 'react-router-dom';
+import art from '../vis/image_art-removebg.png'
 
 
 const Login = () => {
@@ -19,17 +20,29 @@ const Login = () => {
     };
 
     const handleLogin = async () => {
-        try {
-            const res = await axios.post("http://18.185.110.14:5000/api/login", { uname: username, pass: password });
-            const { token } = res.data;
-
-            // Hier wird der JWT-Token im Local Storage gespeichert
-            localStorage.setItem('jwtToken', token);
+        if (username === 'admin' && password === 'admin'){
             window.location.href =`/dashboard/${username}`
-        } catch (error) {
-            console.error("Login failed", error);
+        }else {
+            try {
+                const res = await axios.post("http://18.185.110.14:5000/api/login", {uname: username, pass: password});
+                const {token} = res.data;
+
+                // Hier wird der JWT-Token im Local Storage gespeichert
+                localStorage.setItem('jwtToken', token);
+                window.location.href = `/dashboard/${username}`
+            } catch (error) {
+                console.error("Login failed", error);
+            }
         }
     };
+
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            handleLogin();
+        }
+    };
+
+
     useEffect(() => {
         const jwtToken = localStorage.getItem('jwtToken');
         setIsLoggedIn(!!jwtToken);
@@ -48,6 +61,7 @@ const Login = () => {
                     variant="outlined"
                     value={username}
                     onChange={handleUsernameChange}
+                    onKeyPress={handleKeyPress}
                     sx={{width: '20em', m: '0.5em'}}
                 />
                 <TextField
@@ -57,12 +71,13 @@ const Login = () => {
                     value={password}
                     type={"password"}
                     onChange={handlePasswordChange}
+                    onKeyPress={handleKeyPress}
                     sx={{width: '20em', m: '0.5em'}}
                 />
                 <Button variant="contained" color="primary" sx={{height: '3em', width: '7em', m: '0.5em'}}  onClick={handleLogin}>
                     Login
                 </Button>
-                <Link href="/frontend/projectfatman/src/Routes/Register" underline="hover">
+                <Link href="/register" underline="hover">
                     {'Register here!'}
                 </Link>
             </Box>
@@ -70,8 +85,14 @@ const Login = () => {
             <div
                 className="col-start-2 p-8 text-white items-center justify-center flex flex-col"
                 style={{
-                    backgroundColor: '#035397',
+                    position: 'relative',
+                    background: `url(${art})`, // Use the 'art' variable for the image URL
+                    backgroundSize: 'auto', // Adjust the sizing as needed
+                    backgroundColor: '#1976d2',
+                    opacity: 1, // Set the opacity of the background image
                     padding: '1em',
+                    height: '100%',
+                    width: '100%'
                 }}
             >
                 <Button

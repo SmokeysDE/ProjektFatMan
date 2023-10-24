@@ -3,7 +3,7 @@ import {TextField} from "@mui/material";
 import React from "react";
 import axios from "axios";
 import Button from "@mui/material/Button";
-
+import art from '../vis/image_art-removebg.png'
 
 
 
@@ -115,8 +115,14 @@ const Register = () => {
             <div
                 className="col-start-2 p-8 text-white items-center justify-center flex flex-col"
                 style={{
-                    backgroundColor: '#035397',
+                    position: 'relative',
+                    background: `url(${art})`, // Use the 'art' variable for the image URL
+                    backgroundSize: 'auto', // Adjust the sizing as needed
+                    backgroundColor: '#1976d2',
+                    opacity: 1, // Set the opacity of the background image
                     padding: '1em',
+                    height: '100%',
+                    width: '100%'
                 }}
             >
                 <Button
