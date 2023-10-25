@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { TextField, Button } from "@mui/material";
+import {TextField, Button, useMediaQuery} from "@mui/material";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import { Navigate } from 'react-router-dom';
-import art from '../vis/image_art-removebg.png'
+import art from '../vis/bg_clean.png'
 import Typography from "@mui/material/Typography";
 
 
@@ -13,6 +13,8 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [loginFailed, setLoginFailed] = useState(false);
+    const isXs = useMediaQuery(theme => theme.breakpoints.down('md'));
+
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
     };
@@ -40,13 +42,6 @@ const Login = () => {
         }
     };
 
-    const handleKeyPress = (event) => {
-        if (event.key === 'Enter') {
-            handleLogin();
-        }
-    };
-
-
     useEffect(() => {
         const jwtToken = localStorage.getItem('jwtToken');
         setIsLoggedIn(!!jwtToken);
@@ -59,8 +54,9 @@ const Login = () => {
     };
 
 
+
     return (
-        <div className="grid grid-cols-2 grid-rows-1 w-full h-screen">
+        <div className="grid grid-cols-2 grid-rows-1 w-full h-screen flex">
             {/* Left Column */}
             <div className="col-start-1 flex flex-col justify-center bg-white p-8">
                 <h1 className="font-bold text-2xl text-center">Login</h1>
@@ -94,22 +90,25 @@ const Login = () => {
                     </Link>
                 </Box>
             </div>
-            <div
-                className="col-start-2 p-8 text-white items-center justify-center flex flex-col"
-                style={{
-                    position: 'relative',
-                    background: `url(${art})`, // Use the 'art' variable for the image URL
-                    backgroundSize: 'cover', // Adjust the sizing as needed
-                    backgroundColor: '#1976d2',
-                    padding: '1em',
-                    height: '100%',
-                    width: '100%'
-                }}
+            <div className={`col-start-2 p-8 text-white items-center justify-center flex flex-col ${isXs ? 'hidden' : ''}`}
+                 style={{ backgroundColor: '#1976d2', opacity: 1, padding: '2em', height: '100%', width: '100%' }}
+
             >
+                <div
+                    className="col-start-2 p-8 text-white items-center justify-center flex flex-col"
+                    style={{
+                        position: 'relative',
+                        background: `url(${art})`,
+                        backgroundSize: 'cover',
+                        opacity: 0.75,
+                        height: '80%',
+                        width: '80%',
+                    }}
+                ></div>
                 <Button
                     variant="outlined"
                     sx={{ position: 'absolute', top: '1em', right: '1em', color: 'white', borderColor: 'white' }}
-                    onClick={() => {window.location.href =`/register`}}
+                    onClick={() => { window.location.href = `/register` }}
                 >
                     About
                 </Button>

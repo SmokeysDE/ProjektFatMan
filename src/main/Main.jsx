@@ -6,16 +6,16 @@ import {NumberProvider} from "../provider/NumProvider";
 export default function Main() {
     const [activeSection, setActiveSection] = useState('library');
     return (
-        <NumberProvider>
-            <div className={'bg-graygpt h-screen'}>
-                <main>
-                    <ResponsiveAppBar/>
-                    <div className={'flex flex-row'}>
-                        <SidebarVisible setSection={setActiveSection}/>
-                        <MainPane activeSection={activeSection}/>
-                    </div>
-                </main>
-            </div>
-        </NumberProvider>
+            <NumberProvider>
+                <div className={'bg-graygpt h-screen'}>
+                    <main>
+                        <ResponsiveAppBar/>
+                        <div className={'flex flex-row'}>
+                            <SidebarVisible setSection={setActiveSection}/>
+                            <MainPane activeSection={activeSection}/>
+                        </div>
+                    </main>
+                </div>
+            </NumberProvider>
     );
 }

@@ -3,7 +3,7 @@ import {TextField} from "@mui/material";
 import React from "react";
 import axios from "axios";
 import Button from "@mui/material/Button";
-import art from '../vis/image_art-removebg.png'
+import art from '../vis/bg_clean.png'
 
 
 
@@ -112,32 +112,33 @@ const Register = () => {
                 </Button>
             </Box>
         </div>
-            <div
-                className="col-start-2 p-8 text-white items-center justify-center flex flex-col"
-                style={{
-                    position: 'relative',
-                    background: `url(${art})`, // Use the 'art' variable for the image URL
-                    backgroundSize: 'cover', // Adjust the sizing as needed
-                    backgroundColor: '#1976d2',
-                    opacity: 1, // Set the opacity of the background image
-                    padding: '1em',
-                    height: '100%',
-                    width: '100%'
-                }}
-            >
-                <Button
-                    variant="outlined"
-                    sx={{ position: 'absolute', top: '1em', right: '1em', color: 'white', borderColor: 'white' }}
-                    onClick={() => {window.location.href =`/login`}}
-                >
-                    Login
-                </Button>
-                <p className="font-bold text-center">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin bibendum ut lacus nec
-                    bibendum. Aliquam erat volutpat. Nulla facilisi. Donec in semper massa, nec commodo
-                    augue.
-                </p>
-            </div>
+                <Box className="col-start-2 p-8 text-white items-center justify-center flex flex-col"
+                     style={{backgroundColor: '#1976d2', opacity: 1, padding: '2em', height: '100%', width: '100%'}}>
+                <div
+                    className="col-start-2 p-8 text-white items-center justify-center flex flex-col"
+                    style={{
+                        position: 'relative',
+                        background: `url(${art})`, // Use the 'art' variable for the image URL
+                        backgroundSize: 'cover', // Adjust the sizing as needed
+                        opacity: 0.75, // Set the opacity of the background image
+                        width : '80%',
+                        height: '80%',
+
+                    }}
+                ></div>
+                    <Button
+                        variant="outlined"
+                        sx={{ position: 'absolute', top: '1em', right: '1em', color: 'white', borderColor: 'white' }}
+                        onClick={() => {window.location.href =`/login`}}
+                    >
+                        Login
+                    </Button>
+                    <p className="font-bold text-center opacity-1 text-black">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin bibendum ut lacus nec
+                        bibendum. Aliquam erat volutpat. Nulla facilisi. Donec in semper massa, nec commodo
+                        augue.
+                    </p>
+            </Box>
         </div>
     );
 }
