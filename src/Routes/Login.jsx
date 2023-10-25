@@ -56,9 +56,9 @@ const Login = () => {
 
 
     return (
-        <div className="grid grid-cols-2 grid-rows-1 w-full h-screen flex">
+        <div className={`w-full h-screen flex ${isXs ? 'flex h-screen w-screen' : 'grid grid-cols-2 grid-rows-1 '}`}>
             {/* Left Column */}
-            <div className="col-start-1 flex flex-col justify-center bg-white p-8">
+            <div className={`${isXs ? 'flex flex-col justify-center h-screen w-screen' : 'flex flex-col justify-center col-start-1'} bg-white p-8`}>
                 <h1 className="font-bold text-2xl text-center">Login</h1>
                 <Box sx={{ display: 'flex', flexDirection: 'column', m: '0.5em', justifyContent:'center', alignItems: 'center' }}>
                     <Typography display={loginFailed ? 'block' : 'none'} color={'error'}>Wrong username or password </Typography>
