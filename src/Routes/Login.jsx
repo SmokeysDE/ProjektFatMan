@@ -5,12 +5,14 @@ import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import { Navigate } from 'react-router-dom';
 import art from '../vis/image_art-removebg.png'
+import Typography from "@mui/material/Typography";
 
 
 const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [loginFailed, setLoginFailed] = useState(false);
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
     };
@@ -32,6 +34,8 @@ const Login = () => {
                 window.location.href = `/dashboard/${username}`
             } catch (error) {
                 console.error("Login failed", error);
+                setLoginFailed(true);
+                console.log(loginFailed)
             }
         }
     };
@@ -48,6 +52,12 @@ const Login = () => {
         setIsLoggedIn(!!jwtToken);
     }, []);
 
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            handleLogin();
+        }
+    };
+
 
     return (
         <div className="grid grid-cols-2 grid-rows-1 w-full h-screen">
@@ -55,30 +65,34 @@ const Login = () => {
             <div className="col-start-1 flex flex-col justify-center bg-white p-8">
                 <h1 className="font-bold text-2xl text-center">Login</h1>
                 <Box sx={{ display: 'flex', flexDirection: 'column', m: '0.5em', justifyContent:'center', alignItems: 'center' }}>
-                <TextField
-                    id="outlined-basic-username"
-                    label="Username"
-                    variant="outlined"
-                    value={username}
-                    onChange={handleUsernameChange}
-                    sx={{width: '20em', m: '0.5em'}}
-                />
-                <TextField
-                    id="outlined-basic-password"
-                    label="Password"
-                    variant="outlined"
-                    value={password}
-                    type={"password"}
-                    onChange={handlePasswordChange}
-                    sx={{width: '20em', m: '0.5em'}}
-                />
-                <Button variant="contained" color="primary" sx={{height: '3em', width: '7em', m: '0.5em'}}  onClick={handleLogin}>
-                    Login
-                </Button>
-                <Link href="/register" underline="hover">
-                    {'Register here!'}
-                </Link>
-            </Box>
+                    <Typography display={loginFailed ? 'block' : 'none'} color={'error'}>Wrong username or password </Typography>
+                    <TextField
+                        error={loginFailed}
+                        id="outlined-basic-username"
+                        label="Username"
+                        variant="outlined"
+                        value={username}
+                        onChange={handleUsernameChange}
+                        sx={{width: '20em', m: '0.5em'}}
+                    />
+                    <TextField
+                        error={loginFailed}
+                        id="outlined-basic-password"
+                        label="Password"
+                        variant="outlined"
+                        value={password}
+                        type={"password"}
+                        onChange={handlePasswordChange}
+                        onKeyDown={handleKeyDown}
+                        sx={{width: '20em', m: '0.5em'}}
+                    />
+                    <Button variant="contained" color="primary" sx={{height: '3em', width: '7em', m: '0.5em'}}  onClick={handleLogin}>
+                        Login
+                    </Button>
+                    <Link href="/register" underline="hover">
+                        {'Register here!'}
+                    </Link>
+                </Box>
             </div>
             <div
                 className="col-start-2 p-8 text-white items-center justify-center flex flex-col"
