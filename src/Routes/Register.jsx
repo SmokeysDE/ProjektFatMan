@@ -117,7 +117,7 @@ const Register = () => {
                 style={{
                     position: 'relative',
                     background: `url(${art})`, // Use the 'art' variable for the image URL
-                    backgroundSize: 'auto', // Adjust the sizing as needed
+                    backgroundSize: 'cover', // Adjust the sizing as needed
                     backgroundColor: '#1976d2',
                     opacity: 1, // Set the opacity of the background image
                     padding: '1em',

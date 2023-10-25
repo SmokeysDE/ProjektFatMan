@@ -61,7 +61,6 @@ const Login = () => {
                     variant="outlined"
                     value={username}
                     onChange={handleUsernameChange}
-                    onKeyPress={handleKeyPress}
                     sx={{width: '20em', m: '0.5em'}}
                 />
                 <TextField
@@ -71,7 +70,6 @@ const Login = () => {
                     value={password}
                     type={"password"}
                     onChange={handlePasswordChange}
-                    onKeyPress={handleKeyPress}
                     sx={{width: '20em', m: '0.5em'}}
                 />
                 <Button variant="contained" color="primary" sx={{height: '3em', width: '7em', m: '0.5em'}}  onClick={handleLogin}>
@@ -87,9 +85,8 @@ const Login = () => {
                 style={{
                     position: 'relative',
                     background: `url(${art})`, // Use the 'art' variable for the image URL
-                    backgroundSize: 'auto', // Adjust the sizing as needed
+                    backgroundSize: 'cover', // Adjust the sizing as needed
                     backgroundColor: '#1976d2',
-                    opacity: 1, // Set the opacity of the background image
                     padding: '1em',
                     height: '100%',
                     width: '100%'
@@ -100,7 +97,7 @@ const Login = () => {
                     sx={{ position: 'absolute', top: '1em', right: '1em', color: 'white', borderColor: 'white' }}
                     onClick={() => {window.location.href =`/register`}}
                 >
-                    Register
+                    About
                 </Button>
                 <p className="font-bold text-center">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin bibendum ut lacus nec
