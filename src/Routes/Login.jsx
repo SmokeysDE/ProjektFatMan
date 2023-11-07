@@ -3,7 +3,6 @@ import axios from "axios";
 import {TextField, Button, useMediaQuery} from "@mui/material";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
-import { Navigate } from 'react-router-dom';
 import art from '../vis/bg_clean.png'
 import Typography from "@mui/material/Typography";
 

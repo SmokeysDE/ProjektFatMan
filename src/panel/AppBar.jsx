@@ -13,18 +13,10 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-// import {createTheme} from "@mui/material/styles";
-// import {grey, lime} from "@mui/material/colors";
 import face2 from '../vis/face-2.jpg'
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-// const theme = createTheme({
-//         palette: {
-//             primary: lime,
-//             secondary: grey,
-//         },
-//     });
 
 function ResponsiveAppBar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
