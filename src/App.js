@@ -24,7 +24,7 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Register />} />
+            <Route path="/" element={<Login />} />
             <Route path="/login" element={<Login />} />
             <Route path={'/dashboard/:username'} element={<Main />}/>
             <Route path="/register" element={<Register />} />

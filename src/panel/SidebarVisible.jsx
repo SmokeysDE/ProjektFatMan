@@ -48,7 +48,7 @@ export default function SidebarVisible( {setSection} ) {
     }
     return (
         <Theme>
-            <Box sx={{display: {xs: 'none', md: 'flex'}, width: '15em'}}>
+            <Box sx={{display: {xs: 'none', md: 'flex'}, width: '15em', height: '100vh', mr: '5em', borderRight: '2em solid', borderColor: '#000'}}>
                 <List dense={true}>
                     <ListItemButton onClick={handleLoadLibrary} >
                         <ListItem>

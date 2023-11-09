@@ -16,8 +16,7 @@ export default function Library() {
     return (
         <Box className={'grid grid-cols-1 grid-rows-5 h-calc[1em] w-full gap-4'}>
             <Box className={'flex flex-row row start-1 row-end-2 h-fit w-fit'}>
-                <Shelf />
-                <ConstructorCard/>
+                Content
             </Box>
             <Box className={'flex flex-row row start-4 row-end-4 h-fit w-fit'}>
                 <Typography fontSize={27}>Hello, {username}!</Typography>
